@@ -2,9 +2,8 @@
 
 public class KeyValuePair
 {
-    public string Key { get; }
-
-    public string Value { get; }
+    public string Key;
+    public string Value;
 
     public KeyValuePair(string key, string value)
     {
