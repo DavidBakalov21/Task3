@@ -22,8 +22,9 @@ using KeyValuePair = Task3.KeyValuePair;
  }
 
  var wordEnter = Console.ReadLine();
- if (Dict.Get(wordEnter)!=null)
+ if (WordList.Contains(wordEnter))
  {
+ // Console.WriteLine(Dict.Get("IMITATOR"));
   Console.WriteLine(Dict.Get(wordEnter));
  }
  else
