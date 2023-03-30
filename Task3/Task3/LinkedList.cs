@@ -1,6 +1,8 @@
-﻿namespace Task3;
+﻿using System.Collections;
 
-public class LinkedList
+namespace Task3;
+
+public class LinkedList : IEnumerable
 {
     private LinkedListNode _first;
     private LinkedListNode _last;
@@ -70,5 +72,28 @@ public class LinkedList
             curNode = curNode.Next;
         }
         return null;
+    }
+
+    public int Count()
+    {
+        var curNode = _first;
+        LinkedListNode previous = null;
+        int elnum = 0;
+        while (curNode!=null)
+        {
+            elnum += 1;
+            curNode = curNode.Next;
+        }
+
+        return elnum;
+    }
+    public IEnumerator GetEnumerator()
+    {
+        var curNode = _first;
+        while (curNode.Next!=null)
+        {
+            yield return curNode;
+            curNode = curNode.Next;
+        }
     }
 }

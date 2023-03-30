@@ -16,7 +16,28 @@ public class StringsDictionary
             _buckets[Bucket] = new LinkedList();
         }
         _buckets[Bucket].Add(Pair);
-
+        if (CalculateLoadFactor() > 0.8)
+        {
+            LinkedList[] newList = new LinkedList[_buckets.Length*2];
+          //  for (int i = 0; i < _buckets.Length; i++)
+            //{
+                foreach (var VARIABLE in _buckets)
+                {
+                    //get el from LinkedList from bucket , count hash
+                    foreach (KeyValuePair v1 in VARIABLE)
+                    {
+                        
+                        var NewBucket = CalculateHash(v1.Key) % newList.Length;
+                        newList[NewBucket].Add(v1);
+                    }
+                    
+                    
+                }
+               
+              
+          //  }
+            _buckets = newList;
+        }
 
     }
 
@@ -33,6 +54,19 @@ public class StringsDictionary
         }
     }
 
+    public string FindClosest(string value)
+    {
+        var result = "";
+        for (int i = 0; i <_buckets.Length; i++)
+        {
+            foreach (var MaybeWord in _buckets[i])
+            {
+                
+            }
+        }
+
+        return result;
+    }
     public string Get(string key)
     {
         
@@ -71,27 +105,24 @@ public class StringsDictionary
         // function to convert string value to number 
     }
 
-    public void CalculateLoadFactor()
+    public int CalculateLoadFactor()
     {
-        int empty = 0;
+      //  int empty = 0;
         int filles = 0;
         int loadFactor = 0;
         
         for (int i = 0; i < _buckets.Length; i++)
         {
-            if (_buckets[i]==null)
-            {
-                empty += 1;
-            }
-            else
+            if (_buckets[i]!=null)
             {
                 filles += 1;
             }
+            
         }
 
-        loadFactor = empty / filles;
-        
-        
+        loadFactor =  filles/_buckets.Length;
+        return loadFactor;
+
     }
     
     
