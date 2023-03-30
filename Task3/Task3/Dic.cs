@@ -54,19 +54,22 @@ public class StringsDictionary
         }
     }
 
-    public string FindClosest(string value)
+    /*public string FindClosest(string value)
     {
         var result = "";
         for (int i = 0; i <_buckets.Length; i++)
         {
-            foreach (var MaybeWord in _buckets[i])
+            foreach (KeyValuePair MaybeWord in _buckets[i])
             {
-                
+                if (MaybeWord.)
+                {
+                    
+                }
             }
         }
 
         return result;
-    }
+    }*/
     public string Get(string key)
     {
         
